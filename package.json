@@ -16,6 +16,7 @@
     "nodemon": "^2.0.22"
   },
   "dependencies": {
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "uuidv4": "^6.2.13"
   }
 }

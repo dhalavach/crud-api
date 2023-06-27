@@ -1,4 +1,5 @@
-import { getAllUsers, getUserById } from '../models/usersModel.js';
+import { getAllUsers, getUserById, create } from '../models/usersModel.js';
+import { getPostData } from '../helpers.js';
 
 export const getUsers = async (req, res) => {
   try {
@@ -22,3 +23,27 @@ export const getUser = async (req, res, id) => {
     }
   } catch (err) {}
 };
+
+export const createUser = async (req, res) => {
+  try {
+    const body = await getPostData(req);
+
+    const { name, age, hobbies } = JSON.parse(body);
+
+    const user = {
+      name,
+      age,
+      hobbies,
+    };
+
+    const newUser = await create(user);
+
+    res.writeHead(201, { 'Content-Type': 'application/json' });
+    return res.end(JSON.stringify(newUser));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const updateUser = async (id) => {};
+export const deleteUser = async (id) => {};
