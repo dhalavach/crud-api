@@ -1,2 +1,2 @@
 # crud-api
-CRUD API with Node.js
+CRUD API with vanilla Node.js
