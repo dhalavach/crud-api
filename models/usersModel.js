@@ -27,3 +27,14 @@ export const create = (user) => {
     resolve(newUser);
   });
 };
+
+export const update = (id, data) => {
+  return new Promise((resolve, reject) => {
+    const userIndex = users.findIndex((user) => user.id === id);
+    users[userIndex] = { id, ...data };
+    if (process.env.NODE_ENV !== 'test') {
+      writeToFile('./mock-data/users.json', users);
+    }
+    resolve(users[userIndex]);
+  });
+};
