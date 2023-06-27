@@ -1,6 +1,5 @@
 import { writeFile } from 'fs/promises';
 
-
 export const getPostData = async (req, res) => {
   return new Promise((resolve, reject) => {
     try {
@@ -25,4 +24,9 @@ export const writeToFile = async (name, data) => {
       console.log(err);
     }
   });
+};
+
+export const checkIfRequiredFieldsArePresent = (userInfo) => {
+  if (userInfo.username && userInfo.age && userInfo.hobbies) return true;
+  else return false;
 };

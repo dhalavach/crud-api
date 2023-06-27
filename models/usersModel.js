@@ -38,3 +38,13 @@ export const update = (id, data) => {
     resolve(users[userIndex]);
   });
 };
+
+export const remove = (id) => {
+  return new Promise((resolve, reject) => {
+    const newUsers = users.filter((user) => user.id !== id);
+    if (process.env.NODE_ENV !== 'test') {
+      writeToFile('./mock-data/users.json', newUsers);
+    }
+    resolve();
+  });
+};
